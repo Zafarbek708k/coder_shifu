@@ -7,10 +7,10 @@ import "../../../../core/widgets/text_widget.dart";
 class OnBoardingContent extends StatefulWidget {
   final String? title;
   final String? description;
+  final String imageName;
 
-  const OnBoardingContent({
-    required this.title, required this.description, super.key,
-  });
+
+  const OnBoardingContent({required this.title, required this.description, super.key, required this.imageName});
 
   @override
   State<OnBoardingContent> createState() => _OnBoardingContentState();
@@ -19,12 +19,12 @@ class OnBoardingContent extends StatefulWidget {
 class _OnBoardingContentState extends State<OnBoardingContent> {
   @override
   Widget build(BuildContext context) => Padding(
-    padding:  REdgeInsets.all(16),
+    padding:  REdgeInsets.all(5),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const SizedBox(height: 75),
+        Image.asset(widget.imageName, fit: BoxFit.cover),
         CustomTextWidget(
           widget.title??"title",
           textColor: context.appTheme.onPrimaryContainer,

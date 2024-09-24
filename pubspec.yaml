@@ -93,6 +93,8 @@ flutter:
     - assets/
     - assets/images/
     - assets/icons/
+    - assets/lottie/
+    - assets/code_image/
 # The following section is specific to Flutter packages.
 
   # An image asset can refer to one or more resolution-specific "variants", see

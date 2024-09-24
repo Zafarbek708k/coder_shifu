@@ -8,10 +8,10 @@ const ColorScheme lightColorScheme = ColorScheme(
   onPrimary: AppColors.appBottomNavColorLight,
   secondary: AppColors.black,
   onPrimaryContainer: Colors.deepOrange,
-
+  onSecondary: AppColors.appMainLight,
 
   primaryContainer: Color(0xff141311),
-  onSecondary: Color(0xff141311),
+
   secondaryContainer: Color(0xffffffff),
   onSecondaryContainer: Color(0xff141414),
   tertiary: Color(0xff141311),
@@ -22,7 +22,7 @@ const ColorScheme lightColorScheme = ColorScheme(
   onError: Color(0xffffffff),
   errorContainer: Color(0xfffcd8df),
   onErrorContainer: Color(0xff141213),
-  surface: Color(0xfffffbf9),
+  surface: Color(0xffffffff),
   onSurface: Color(0xff141311),
   surfaceContainerHighest: Color(0xffeee8e3),
   onSurfaceVariant: Color(0xff121211),
@@ -42,9 +42,12 @@ const ColorScheme darkColorScheme = ColorScheme(
   onPrimary: AppColors.appBottomNavColor,
   secondary: AppColors.white,
   onPrimaryContainer: Colors.deepOrange,
+  onSecondary: AppColors.appMainDark,
+
+  surface: Colors.black,     // light.primary == black.surface
+
 
   primaryContainer: AppColors.yellow,
-  onSecondary: Colors.blue,
   secondaryContainer:  Colors.blue,
   onSecondaryContainer: Colors.blue,
   tertiary: Colors.blue,
@@ -55,7 +58,6 @@ const ColorScheme darkColorScheme = ColorScheme(
   onError:  Colors.blue,
   errorContainer: Colors.blue,
   onErrorContainer: Colors.blue,
-  surface: Colors.green,     // light.primary == black.surface
   onSurface: Color(0xff141311),
   surfaceContainerHighest: Color(0xff141311),
   onSurfaceVariant: Color(0xff121211),

@@ -64,14 +64,16 @@ class _HomeNavigationState extends State<HomeNavigation> {
                 unselectedLabelStyle: context.appTextStyle.bodyMedium,
                 unselectedFontSize: 10,
                 selectedFontSize: 10,
-                unselectedItemColor: Colors.grey.shade500,
-                selectedItemColor: Colors.lightGreen,
+                unselectedItemColor: Colors.grey.shade200,
+                selectedItemColor: Colors.yellowAccent,
                 elevation: 0,
-                backgroundColor: Colors.blueGrey.shade700,
-                items:  [
-                  BottomNavigationBarItem(icon: const Icon(Icons.home), label: context.localized.home),
-                  BottomNavigationBarItem(icon: const Icon(Icons.search), label: context.localized.search),
-                  BottomNavigationBarItem(icon: const Icon(Icons.list), label: context.localized.watchList),
+                backgroundColor: context.appTheme.onSecondary,
+
+                items:  const [
+                  BottomNavigationBarItem(icon: Icon(Icons.library_add_check_outlined), label: "Subject"),
+                  BottomNavigationBarItem(icon: Icon(Icons.book), label: "Book"),
+                  BottomNavigationBarItem(icon: Icon(Icons.group_rounded), label: "Top Users"),
+                  BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
                 ],
                 currentIndex: widget.navigationShell.currentIndex,
                 onTap: (index) => _onItemTapped(index),

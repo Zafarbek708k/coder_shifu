@@ -1,6 +1,10 @@
+import "package:coder_shifu/src/feature/entry/view/pages/on_boarding_page.dart";
+import "package:coder_shifu/src/feature/entry/view/pages/splash_page.dart";
+import "package:coder_shifu/src/feature/main/view/sub_pages/lesson.dart";
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
 import "../../feature/home_navigation.dart";
+import "../../feature/main/view/pages/subject.dart";
 import "app_route_name.dart";
 
 final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell-key');
@@ -11,18 +15,24 @@ final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>(debu
 final class AppRouter {
   const AppRouter._();
 
+  static final GoRoute lesson = GoRoute(
+    parentNavigatorKey: appNavigatorKey,
+      path: AppRouteName.lesson,
+    pageBuilder: (BuildContext context, GoRouterState state) => const MaterialPage(child: Lesson()),
+  );
+
   static final GoRouter router = GoRouter(
     navigatorKey: appNavigatorKey,
-    initialLocation: AppRouteName.home,
+    initialLocation: AppRouteName.splash,
     routes: [
       GoRoute(
         path: AppRouteName.splash,
-        builder: (context, state) => const Scaffold(),
+        builder: (context, state) => const SplashPage(),
       ),
 
       GoRoute(
         path: AppRouteName.welcomePage,
-        builder: (context, state) => const Scaffold(),
+        builder: (context, state) => const OnBoardingPage(),
       ),
 
       /// Patient Shell Route
@@ -36,18 +46,20 @@ final class AppRouter {
             navigatorKey: _shellNavigatorKey,
             routes: [
               GoRoute(
-                path: AppRouteName.home,
+                path: AppRouteName.subject,
                 pageBuilder: (context, state) => const NoTransitionPage(
-                  child: Scaffold()
+                  child: Subject()
                 ),
-                routes: const [],
+                routes: [
+                  lesson
+                ],
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRouteName.search,
+                path: AppRouteName.books,
                 pageBuilder: (context, state) => const NoTransitionPage(child: Scaffold()),
               ),
             ],
@@ -55,7 +67,15 @@ final class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRouteName.watchList,
+                path: AppRouteName.topUsers,
+                pageBuilder: (context, state) => const NoTransitionPage(child: Scaffold()),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRouteName.profile,
                 pageBuilder: (context, state) => const NoTransitionPage(child: Scaffold()),
               ),
             ],

@@ -4,12 +4,13 @@ import "package:flutter/material.dart";
 final class AppRouteName {
   static const String splash = "/splashPage";
   static const String welcomePage = "/welcome";
-  static const String home = "/home";
-  static const String search = "/search";
-  static const String watchList = "/watch-list";
+  static const String subject = "/subject";
+  static const String books = "/books";
+  static const String topUsers = "/top-user";
   static const String profile = "/profile";
   static const String homeDetail = "homeDetail";
   static const String searchDetail = "searchDetail";
+  static const String lesson = "lesson";
 
 
   // static const String signIn = "/signIn";

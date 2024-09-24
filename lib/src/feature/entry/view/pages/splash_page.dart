@@ -1,10 +1,11 @@
 import "dart:async";
 import "dart:developer";
+import "package:coder_shifu/src/core/widgets/text_widget.dart";
 import "package:flutter/material.dart";
-import "package:flutter_screenutil/flutter_screenutil.dart";
 import "package:go_router/go_router.dart";
 import "package:coder_shifu/src/core/constants/context_extension.dart";
 import "package:coder_shifu/src/core/storage/app_storage.dart";
+import "package:lottie/lottie.dart";
 import "../../../../core/routes/app_route_name.dart";
 
 class SplashPage extends StatefulWidget {
@@ -28,18 +29,17 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   @override
-  void didChangeDependencies() async {
-    bool? a = await isEnterUser();
-    log("a ==  $a");
-    Timer(const Duration(seconds: 2), () {
-      if (a != null && a == true) {
-        context.go(AppRouteName.home);
-      } else {
-        context.go(AppRouteName.welcomePage);
-      }
-    });
-    super.didChangeDependencies();
-  }
+    void didChangeDependencies() async {
+      bool? a = await isEnterUser();
+      Timer(const Duration(seconds: 2), () {
+        if (a != null && a == true) {
+          context.go(AppRouteName.subject);
+        } else {
+          context.go(AppRouteName.welcomePage);
+        }
+      });
+      super.didChangeDependencies();
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -51,23 +51,8 @@ class _SplashPageState extends State<SplashPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(
-                height: 150.h,
-                width: 150.h,
-                decoration: BoxDecoration(
-                  color: context.appTheme.primary,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: context.appTheme.secondary),
-                  image: const DecorationImage(
-                    image: AssetImage("assets/images/app_logo.png"),
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 25),
-              Text("Movie App", style: context.appTextStyle.bodyLarge),
-
-
+              Lottie.asset('assets/lottie/splash.json'),
+              CustomTextWidget("Code Guide", textColor: context.appTheme.onSecondary, fontSize: 24, fontWeight: FontWeight.bold),
             ],
           ),
         ),
@@ -75,32 +60,3 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 }
-
-/// Example of using color them and locale
-
-///     Text(
-//                 context.localized.welcome3description,
-//                 style: context.appTextStyle.bodyMedium,
-//               ),
-//               MaterialButton(
-//                 onPressed: () async {
-//                   themeController.switchTheme(); // Using the shared instance
-//                 },
-//                 shape: const StadiumBorder(side: BorderSide(color: Colors.orangeAccent)),
-//                 child: Text(
-//                   "switch them",
-//                   style: TextStyle(color:  Theme.of(context).colorScheme.secondary),
-//                 ),
-//               ),
-//
-//               MaterialButton(
-//                 onPressed: () async {
-//                   localController.changeLocal(LangCodes.en);
-//                 },
-//                 shape: const StadiumBorder(side: BorderSide(color: Colors.orangeAccent)),
-//                 child: Text(
-//                   "switch Lang",
-//                   style: TextStyle(color:  Theme.of(context).colorScheme.secondary),
-//                 ),
-//               ),
-//

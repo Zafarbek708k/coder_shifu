@@ -1,4 +1,4 @@
-import "dart:ui";
+import "package:flutter/material.dart";
 
 final class AppColors {
   // dark mode colors
@@ -8,12 +8,13 @@ final class AppColors {
 
 
 // light mode colors
-  static const Color appMainColorLight = Color(0xffF5F5F5); // Light gray (near white) for background
-  static const Color appBottomNavColorLight = Color(0xff006AB6); // Darker blue for accent (suitable for light mode)
-  static const Color black = Color(0xff000000); // Black text or elements for contrast
+  static const Color appMainColorLight = Color(0xffF5F5F5);
+  static const Color appBottomNavColorLight = Color(0xff006AB6);
+  static const Color black = Color(0xff000000);
 
 
-  static const Color lF96234 = Color(0xffF96234);
+  static const Color appMainDark = Colors.deepPurple;
+  static const Color appMainLight = Colors.deepPurple;
 
   static const Color lFED8CC = Color(0xffFED8CC);
   //discover page MAIN colors

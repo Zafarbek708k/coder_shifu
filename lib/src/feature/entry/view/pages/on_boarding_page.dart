@@ -1,5 +1,4 @@
 import "dart:developer";
-
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
@@ -7,10 +6,9 @@ import "package:coder_shifu/src/core/constants/context_extension.dart";
 import "package:smooth_page_indicator/smooth_page_indicator.dart";
 import "../../../../../riverpod.dart";
 import "../../../../core/routes/app_route_name.dart";
+import "../../../../core/widgets/app_material_context.dart";
 import "../../../../core/widgets/text_widget.dart";
 import "../widgets/onboarding_content_widget.dart";
-
-
 
 class OnBoardingPage extends ConsumerStatefulWidget {
   const OnBoardingPage({super.key});
@@ -26,41 +24,40 @@ class _OnBoardingPageState extends ConsumerState<OnBoardingPage> {
     final controller = ref.read(entryController);
 
     return Scaffold(
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(controller.images[controller.currentPage]),
-            fit: BoxFit.cover
-          )
-        ),
-        child: Stack(
-          alignment: Alignment.bottomCenter,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 25),
+        child: Column(
           children: [
-            PageView(
-              controller: controller.pageController,
-              onPageChanged: (index) {
-                controller.onPageChanged(index);
-              },
-              children:  [
-                OnBoardingContent(
-                  title: context.localized.welcome1title,
-                  description: context.localized.welcome1description,
-                ),
-                OnBoardingContent(
-                  title: context.localized.welcome2title,
-                  description: context.localized.welcome2description,
-                ),
-                OnBoardingContent(
-                  title: context.localized.welcome3title,
-                  description:context.localized.welcome3description,
-                ),
-              ],
+            Expanded(
+              flex: 7,
+              child: PageView(
+                controller: controller.pageController,
+                onPageChanged: (index) {
+                  controller.onPageChanged(index);
+                },
+                children: [
+                  OnBoardingContent(
+                    title: context.localized.welcome1title,
+                    description: context.localized.welcome1description,
+                    imageName: controller.images[controller.currentPage],
+                  ),
+                  OnBoardingContent(
+                    title: context.localized.welcome2title,
+                    description: context.localized.welcome2description,
+                    imageName: controller.images[controller.currentPage],
+                  ),
+                  OnBoardingContent(
+                    title: context.localized.welcome3title,
+                    description: context.localized.welcome3description,
+                    imageName: controller.images[controller.currentPage],
+                  ),
+                ],
+              ),
             ),
-            Positioned(
-              bottom: 20,
-              child: Column(
+            Expanded(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   SmoothPageIndicator(
                     controller: controller.pageController,
@@ -73,17 +70,20 @@ class _OnBoardingPageState extends ConsumerState<OnBoardingPage> {
                       spacing: 8,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(width: 50),
                   ElevatedButton(
                     onPressed: controller.currentPage == 2
-                        ? () {context.go(AppRouteName.home);}
+                        ? () {
+                            context.go(AppRouteName.subject);
+                            controller.saveUser();
+                          }
                         : () {
-                      log("A");
-                      controller.pageController.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeIn,
-                      );
-                    },
+                            log("A");
+                            controller.pageController.nextPage(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeIn,
+                            );
+                          },
                     child: CustomTextWidget(controller.currentPage > 1 ? "Get Started" : "Next", textColor: context.appTheme.secondary),
                   ),
                 ],
@@ -96,3 +96,14 @@ class _OnBoardingPageState extends ConsumerState<OnBoardingPage> {
   }
 }
 
+/// delete local saved user data
+
+//  MaterialButton(onPressed: (){
+//               controller.deleteUser();
+//               },
+//               shape: const StadiumBorder(side: BorderSide(color: Colors.deepOrange)),
+//               child: const Text(
+//                 "delete user",
+//                 style: TextStyle(color: Colors.deepPurple),
+//               ),
+//             ),
