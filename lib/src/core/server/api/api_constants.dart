@@ -5,30 +5,25 @@ final class ApiConst {
   static const Duration sendTimeout = Duration(minutes: 1);
   static const Duration receiveTimeout = Duration(minutes: 1);
 
-  static const String baseUrl = "https://api.themoviedb.org";
-  static const String version = "/3";
-  static const String apiUpcoming = "$version/movie/upcoming";
-  static const String apiPopular= "$version/movie/popular";
-  static const String apiTopRated = "$version/movie/top_rated";
+  static const String baseUrl = "https://google.serper.dev";
+
+  static const String apiSearch = "/search";
+  static const String apiImages = "/images";
+  static const String apiVideos = "/videos";
+
 
 // Query parameters
-  static final Map<String, String> param = {
+  static final Map<String, String> header = {
     "api_key": ApiConst.apiKey,
     "Content-Type": "application/json",
   };
 
 
 
-  // Dynamic API Endpoints
-  static String apiGetMovieLis = "$version/account/$accountId/lists";
-  static String apiGetWatchListMovies = "$version/account/$accountId/watchlist/movies";
-
-  // Static Endpoint (for general trending movies with pagination)
-  static const String apiGetMovieWithPage = "/trending/all/day";
 
   // Account and API Keys
   static const String accountId = "21460780";
-  static const String apiKey = "c310d0f072e64a61d4097736dfc040c6";
+  static const String apiKey = "9fe21bcc3c49eaa1df5d00bc414b721bfed686cc";
 }
 
 final class ApiParams {

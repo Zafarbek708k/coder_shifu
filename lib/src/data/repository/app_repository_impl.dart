@@ -2,10 +2,8 @@ import "dart:developer";
 
 import "package:coder_shifu/src/core/server/api/api.dart";
 import "package:coder_shifu/src/core/server/api/api_constants.dart";
-import "package:coder_shifu/src/data/entity/model_2.dart";
+import "package:coder_shifu/src/data/entity/search_model.dart";
 
-import "../entity/model.dart";
-import "../entity/movie_model.dart";
 import "app_repository.dart";
 
 
@@ -14,48 +12,32 @@ class AppRepositoryImpl implements AppRepository {
   const AppRepositoryImpl._internal();
   static const AppRepositoryImpl _impl = AppRepositoryImpl._internal();
 
-
-
-
-
   @override
-  Future<Model?> popularMovies() async{
-    late Model model;
-    String? result = await ApiService.get(ApiConst.apiPopular, ApiConst.param);
+  Future<SearchModel?> search() async{
+    String? result =  await ApiService.post(ApiConst.apiSearch, {"q":"galaxy"});
+    log(result ?? "no result");
     if(result != null){
-      log("Api popular result == $result");
-      model =  modelFromJson(result);
-      return model;
+      SearchModel model = searchModelFromJson(result);
+      log(model.credits.toString());
+      return searchModelFromJson(result);
     }else{
       return null;
     }
   }
 
   @override
-  Future<Model?> topRatedMovies() async{
-    late Model model;
-    String? result = await ApiService.get(ApiConst.apiTopRated, ApiConst.param);
-    log("Api topRated result == $result");
-    if(result != null){
-      model =  modelFromJson(result);
-      return model;
-    }else{
-      return null;
-    }
+  Future<void> images() async{
+    String? result = await ApiService.post(ApiConst.apiImages, {  "q": "apple inc"});
+    log("images ==> $result");
   }
 
+
   @override
-  Future<Model?> upcomingMovies() async {
-    late Model model;
-    String? result = await ApiService.get(ApiConst.apiUpcoming, ApiConst.param);
-    log("Api UPComing result == $result");
-    if(result != null){
-      model =  modelFromJson(result);
-      return model;
-    }else{
-      return null;
-    }
+  Future<void> videos() async{
   }
+
+
+
 
 
 }

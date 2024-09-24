@@ -54,6 +54,7 @@ class ApiService {
     final headers = <String, String>{
       "Content-type": isUpload ? "multipart/form-data" : "application/json; charset=UTF-8",
       "Accept": isUpload ? "multipart/form-data" : "application/json; charset=UTF-8",
+      "X-API-KEY": '9fe21bcc3c49eaa1df5d00bc414b721bfed686cc',
     };
 
     final token = await AppStorage.$read(key: StorageKey.accessToken) ?? "";
@@ -67,14 +68,12 @@ class ApiService {
 
   static Future<String?> get(String api, Map<String, String> params) async {
     final fullUrl = "${ApiConst.baseUrl}$api";
-        log("Request URL: $fullUrl");
-        log("Request Params: $params");
+        log("Request URL: $fullUrl  \n Request Params: $params");
     try {
       final response = await (await initDio()).get<dynamic>(api, queryParameters: params);
       log("response status code = ${response.statusCode}");
-
       if (response.statusCode == 200 || response.statusCode == 201) {
-        log("response data ketti api response == ${response.data}");
+        log("response data == ${response.data}");
         return jsonEncode(response.data);
       }
     } on DioException catch (e) {
@@ -117,29 +116,7 @@ class ApiService {
     }
   }
 
-  // static Future<String?> get(String api, Map<String, dynamic> params) async {
-  //   try {
-  //     final fullUrl = "${ApiConst.baseUrl}$api";
-  //     log("Request URL: $fullUrl");
-  //     log("Request Params: $params");
-  //     final response = await (await initDio()).get<dynamic>(api, queryParameters: params);
-  //
-  //     log("responce data "+response.data);
-  //     log(response.data.runtimeType.toString());
-  //     // return response.data;
-  //     return jsonEncode(response.data);
-  //
-  //   } on TimeoutException catch (_) {
-  //     l.e("The connection has timed out, Please try again!");
-  //     rethrow;
-  //   } on DioException catch (e) {
-  //     l.e(e.response.toString());
-  //     rethrow;
-  //   } on Object catch (e) {
-  //     l.e(e.toString());
-  //     rethrow;
-  //   }
-  // }
+
 
   static Future<String?> post(String api, Map<String, dynamic> data, [Map<String, dynamic> params = const <String, dynamic>{}]) async {
     try {

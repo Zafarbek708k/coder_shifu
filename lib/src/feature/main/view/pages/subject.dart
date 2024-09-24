@@ -70,23 +70,17 @@ class _SubjectState extends ConsumerState<Subject> {
   }
 }
 
-SubjectModel model = SubjectModel(
-    subjectTitle: "Flutter",
-    lessonTitle: "Container widget",
-    codeImageUrl: [
-      Photo(description: "using shape ", image: "assets/code_image/container-gradient.png"),
-      Photo(description: "using border gradient", image: "assets/code_image/container-gradient.png"),
-      Photo(description: "using linear gradient", image: "assets/code_image/container-gradient.png"),
-    ],
-    uIImageUrl: [
-      Photo(description: "Result of linear gradient in a Container", image: "assets/code_image/container-gradient-ui.png")
-    ],
-    documentation:  [
-            "The Container widget in Flutter is a versatile widget for layout, decoration, and alignment.",
-            "It can be used to add padding, margin, borders, background color, and other styles to a widget.",
-            "Containers can be nested, making it possible to create complex layouts with ease."
-          ]
-);
+SubjectModel model = SubjectModel(subjectTitle: "Flutter", lessonTitle: "Container widget", codeImageUrl: [
+  Photo(description: "using shape ", image: "assets/code_image/container-gradient.png"),
+  Photo(description: "using border gradient", image: "assets/code_image/container-gradient.png"),
+  Photo(description: "using linear gradient", image: "assets/code_image/container-gradient.png"),
+], uIImageUrl: [
+  Photo(description: "Result of linear gradient in a Container", image: "assets/code_image/container-gradient-ui.png")
+], documentation: [
+  "The Container widget in Flutter is a versatile widget for layout, decoration, and alignment.",
+  "It can be used to add padding, margin, borders, background color, and other styles to a widget.",
+  "Containers can be nested, making it possible to create complex layouts with ease."
+]);
 
 class SubjectModel {
   String? subjectTitle;
@@ -95,7 +89,6 @@ class SubjectModel {
   List<String>? documentation;
   List<Photo>? codeImageUrl;
   List<Photo>? uIImageUrl;
-
 
   SubjectModel({this.subjectTitle, this.codeImageUrl, this.lessonTitle, this.uIImageUrl, this.videoUrl, this.documentation});
 }

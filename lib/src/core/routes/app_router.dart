@@ -1,5 +1,8 @@
 import "package:coder_shifu/src/feature/entry/view/pages/on_boarding_page.dart";
 import "package:coder_shifu/src/feature/entry/view/pages/splash_page.dart";
+import "package:coder_shifu/src/feature/main/view/pages/book.dart";
+import "package:coder_shifu/src/feature/main/view/pages/news.dart";
+import "package:coder_shifu/src/feature/main/view/pages/profile.dart";
 import "package:coder_shifu/src/feature/main/view/sub_pages/lesson.dart";
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
@@ -60,15 +63,15 @@ final class AppRouter {
             routes: [
               GoRoute(
                 path: AppRouteName.books,
-                pageBuilder: (context, state) => const NoTransitionPage(child: Scaffold()),
+                pageBuilder: (context, state) => const NoTransitionPage(child: Book()),
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: AppRouteName.topUsers,
-                pageBuilder: (context, state) => const NoTransitionPage(child: Scaffold()),
+                path: AppRouteName.news,
+                pageBuilder: (context, state) => const NoTransitionPage(child: News()),
               ),
             ],
           ),
@@ -76,7 +79,7 @@ final class AppRouter {
             routes: [
               GoRoute(
                 path: AppRouteName.profile,
-                pageBuilder: (context, state) => const NoTransitionPage(child: Scaffold()),
+                pageBuilder: (context, state) => const NoTransitionPage(child: Profile()),
               ),
             ],
           ),

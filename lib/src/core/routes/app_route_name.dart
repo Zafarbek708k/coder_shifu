@@ -6,7 +6,7 @@ final class AppRouteName {
   static const String welcomePage = "/welcome";
   static const String subject = "/subject";
   static const String books = "/books";
-  static const String topUsers = "/top-user";
+  static const String news = "/news";
   static const String profile = "/profile";
   static const String homeDetail = "homeDetail";
   static const String searchDetail = "searchDetail";
