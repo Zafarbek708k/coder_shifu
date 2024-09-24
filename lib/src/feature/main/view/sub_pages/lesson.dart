@@ -3,6 +3,11 @@ import 'package:coder_shifu/src/core/widgets/text_widget.dart';
 import 'package:coder_shifu/src/feature/main/view/pages/subject.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/lesson_codeui_widget.dart';
+import '../widgets/lesson_uidocumentaation_widget.dart';
+
+enum ViewType { documentation, code, ui }
+
 class Lesson extends StatefulWidget {
   const Lesson({super.key});
 
@@ -44,7 +49,7 @@ class _LessonState extends State<Lesson> {
       case ViewType.code:
         return CodeUi(model: model); // Add your code widget here
       case ViewType.ui:
-        return const Column(); // Add your UI widget here
+        return Ui(model: model); // Add your UI widget here
       default:
         return const CircularProgressIndicator();
     }
@@ -89,111 +94,5 @@ class _LessonState extends State<Lesson> {
     setState(() {
       currentView = viewType;
     });
-  }
-}
-
-enum ViewType { documentation, code, ui }
-
-class CodeUi extends StatelessWidget {
-  const CodeUi({super.key, required this.model});
-
-  final SubjectModel model;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomTextWidget(
-            model.lessonTitle ?? "No title",
-            fontWeight: FontWeight.bold,
-            textColor: context.appTheme.secondary,
-            fontSize: 22,
-          ),
-          Expanded(
-            child: PageView.builder(
-              itemCount: model.codeImageUrl?.length ?? 0,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextWidget(model.codeImageUrl?[index].description ?? "no description"),
-                      const SizedBox(height: 10),
-                      Container(
-                        decoration:  BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          gradient: const LinearGradient(
-                            colors: [Colors.deepPurple, Colors.deepPurpleAccent, Colors.purple, Colors.purpleAccent],
-                          ),
-                        ),
-                        child: Container(
-                          margin: const EdgeInsets.all(4),
-                          height: 300,
-                          width: 375,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            image: DecorationImage(
-                                image: AssetImage(model.codeImageUrl?[index].image ?? "assets/images/x-image.png"), fit: BoxFit.cover),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class UIDocumentation extends StatelessWidget {
-  const UIDocumentation({super.key, required this.model});
-
-  final SubjectModel model;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomTextWidget(
-            model.lessonTitle ?? "No title",
-            fontWeight: FontWeight.bold,
-            textColor: context.appTheme.secondary,
-            fontSize: 22,
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: model.documentation?.length ?? 0,
-              itemBuilder: (context, index) {
-                String? doc = model.documentation?[index];
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Card(
-                    child: ListTile(
-                      title: CustomTextWidget(
-                        doc ?? "No description",
-                        fontWeight: FontWeight.w400,
-                        textColor: context.appTheme.secondary,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          )
-        ],
-      ),
-    );
   }
 }

@@ -79,7 +79,7 @@ SubjectModel model = SubjectModel(
       Photo(description: "using linear gradient", image: "assets/code_image/container-gradient.png"),
     ],
     uIImageUrl: [
-      Photo(description: "using linear gradient in a Container", image: "assets/code_image/container-gradient.png")
+      Photo(description: "Result of linear gradient in a Container", image: "assets/code_image/container-gradient-ui.png")
     ],
     documentation:  [
             "The Container widget in Flutter is a versatile widget for layout, decoration, and alignment.",
