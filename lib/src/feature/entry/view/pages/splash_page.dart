@@ -16,11 +16,11 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  late final String? enterUser;
+  String? enterUser;
 
   Future<bool?> isEnterUser() async {
     enterUser = await AppStorage.$read(key: StorageKey.enter);
-    log(enterUser ?? "enter user = null");
+    log("enterUser ==  ${enterUser!}");
     if (enterUser != null) {
       return true;
     } else {
@@ -29,17 +29,26 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   @override
-    void didChangeDependencies() async {
-      bool? a = await isEnterUser();
-      Timer(const Duration(seconds: 2), () {
-        if (a != null && a == true) {
-          context.go(AppRouteName.subject);
-        } else {
-          context.go(AppRouteName.welcomePage);
+  void initState() {
+    super.initState();
+    navigateToNextPage();
+  }
+
+  void navigateToNextPage() async {
+    bool? isEntered = await isEnterUser();
+    Timer(
+      const Duration(seconds: 2),
+      () {
+        if (mounted) {
+          if (isEntered == true) {
+            context.go(AppRouteName.subject);
+          } else {
+            context.go(AppRouteName.welcomePage);
+          }
         }
-      });
-      super.didChangeDependencies();
-    }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +61,12 @@ class _SplashPageState extends State<SplashPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Lottie.asset('assets/lottie/splash.json'),
-              CustomTextWidget("Code Guide", textColor: context.appTheme.onSecondary, fontSize: 24, fontWeight: FontWeight.bold),
+              CustomTextWidget(
+                "Code Guide",
+                textColor: context.appTheme.onSecondary,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ],
           ),
         ),

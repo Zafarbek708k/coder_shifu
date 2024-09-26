@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:coder_shifu/src/core/constants/context_extension.dart';
@@ -6,7 +8,6 @@ import 'package:coder_shifu/src/core/widgets/app_checkbox_button.dart';
 import '../../../../core/storage/sheared_preferens.dart';
 import '../../../../core/widgets/app_material_context.dart';
 import '../../../settings/locale_controller.dart';
-
 class LangButton extends StatefulWidget {
   const LangButton({super.key});
 
@@ -15,47 +16,36 @@ class LangButton extends StatefulWidget {
 }
 
 class _LangButtonState extends State<LangButton> {
-  bool isPressed = false, eng = false, uz = false, ru = false;
-  String? lang;
+  bool eng = false, uz = false, ru = false;
   late StorageService storageService;
-
-
-  Future<void> readLang() async {
-    setState(() {
-      lang = storageService.read("app_local");
-    });
-
-    setState(() {
-      if (lang == "uz") {
-        uz = true;
-      } else if (lang == "ru") {
-        ru = true;
-      } else if (lang == "en") {
-        eng = true;
-      }
-    });
-  }
-
-
-
-  Future<void> _initStorage() async {
-    final prefs = await StorageService.init;
-    setState(() {
-      storageService = StorageService(db: prefs);
-    });
-
-
-    readLang();
-  }
-
-
-
+  String lang = "uz"; // Default to "uzbek" if no language found
 
   @override
   void initState() {
     super.initState();
-    readLang();
-    _initStorage();
+    _initializeLang();
+  }
+
+  Future<void> _initializeLang() async {
+    storageService = await StorageService.instance;
+    String? storedLang = storageService.read("app_local");
+    debugPrint(storedLang ?? "stored lang == null");
+
+    setState(() {
+      lang = storedLang ?? "uz"; // Default to "uz" if storedLang is null
+      switch (lang) {
+        case "en":
+          eng = true;
+          break;
+        case "ru":
+          ru = true;
+          break;
+        case "uz":
+        default:
+          uz = true;
+          break;
+      }
+    });
   }
 
   @override
@@ -83,12 +73,16 @@ class _LangButtonState extends State<LangButton> {
 
   Widget _buildLangOption(String lang, LangCodes langCode, bool isSelected) {
     return InkWell(
-      onTap: () {
+      onTap: () async {
         setState(() {
           eng = langCode == LangCodes.en;
           uz = langCode == LangCodes.uz;
           ru = langCode == LangCodes.ru;
         });
+
+        // Store selected language
+        await storageService.store("app_local", langCode.name);
+
         localController.changeLocal(langCode);
       },
       child: AnimatedContainer(
@@ -109,5 +103,4 @@ class _LangButtonState extends State<LangButton> {
     );
   }
 }
-
 

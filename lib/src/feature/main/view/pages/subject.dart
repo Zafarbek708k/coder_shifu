@@ -28,19 +28,19 @@ class _SubjectState extends ConsumerState<Subject> {
         child: Column(
           children: [
             CustomSubjectButton(
-              title: "Flutter",
+              title: "Flutter    ",
               imageName: "assets/icons/flutter_icon.png",
               onPressed: () {
-                context.go("${AppRouteName.subject}/${AppRouteName.lesson}");
+                context.go("${AppRouteName.subject}/${AppRouteName.contents}");
               },
             ),
             CustomSubjectButton(
-              title: "Java",
+              title: "Java  ",
               imageName: "assets/icons/java_icon.png",
               onPressed: () {},
             ),
             CustomSubjectButton(
-              title: "C#",
+              title: "C#  ",
               imageName: "assets/icons/c_sharp_icon.png",
               onPressed: () {},
             ),

@@ -7,6 +7,11 @@ final class AppColors {
   static const Color white = Color(0xffffffff);
 
 
+  static const Color primaryColor = Color(0xFFB388FF);
+
+
+
+
 // light mode colors
   static const Color appMainColorLight = Color(0xffF5F5F5);
   static const Color appBottomNavColorLight = Color(0xff006AB6);
