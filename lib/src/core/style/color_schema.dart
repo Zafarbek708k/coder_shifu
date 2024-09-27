@@ -45,9 +45,7 @@ const ColorScheme darkColorScheme = ColorScheme(
   onSecondary: AppColors.appMainDark,
 
   surface: Colors.black,     // light.primary == black.surface
-
-
-  primaryContainer: AppColors.yellow,
+  primaryContainer: AppColors.l767989,
   secondaryContainer:  Colors.blue,
   onSecondaryContainer: Colors.blue,
   tertiary: Colors.blue,

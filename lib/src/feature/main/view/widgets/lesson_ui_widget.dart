@@ -1,8 +1,5 @@
-
-
 import 'package:coder_shifu/src/core/constants/context_extension.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/widgets/text_widget.dart';
 import '../pages/subject.dart';
 
@@ -57,7 +54,8 @@ class Ui extends StatelessWidget {
                 );
               },
             ),
-          )
+          ),
+          const SizedBox(height: 50)
         ],
       ),
     );

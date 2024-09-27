@@ -3,6 +3,7 @@ import "package:coder_shifu/src/feature/entry/view/pages/splash_page.dart";
 import "package:coder_shifu/src/feature/main/view/pages/book.dart";
 import "package:coder_shifu/src/feature/main/view/pages/news.dart";
 import "package:coder_shifu/src/feature/main/view/pages/profile.dart";
+import "package:coder_shifu/src/feature/main/view/sub_pages/content_description.dart";
 import "package:coder_shifu/src/feature/main/view/sub_pages/contents.dart";
 import "package:coder_shifu/src/feature/main/view/sub_pages/lesson.dart";
 import "package:flutter/material.dart";
@@ -22,7 +23,20 @@ final class AppRouter {
   static final GoRoute lesson = GoRoute(
     parentNavigatorKey: appNavigatorKey,
     path: AppRouteName.lesson,
-    pageBuilder: (BuildContext context, GoRouterState state) => const MaterialPage(child: Lesson()),
+    pageBuilder: (BuildContext context, GoRouterState state){
+      return  const MaterialPage(child: Lesson());
+    },
+  );
+
+  static final GoRoute contentDescription = GoRoute(
+    parentNavigatorKey: appNavigatorKey,
+    path: AppRouteName.contentsDescription,
+    pageBuilder: (BuildContext context, GoRouterState state){
+      return  MaterialPage(child: ContentDescription(argument: state.extra! as Map<String, bool>,));
+    },
+    routes: [
+      lesson
+    ]
   );
   static final GoRoute contents = GoRoute(
       parentNavigatorKey: appNavigatorKey,
@@ -31,7 +45,7 @@ final class AppRouter {
       child: Contents(),
     ),
     routes: [
-      lesson
+      contentDescription
     ]
   );
 

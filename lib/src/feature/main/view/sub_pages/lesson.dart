@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:coder_shifu/src/core/constants/context_extension.dart';
 import 'package:coder_shifu/src/core/widgets/text_widget.dart';
 import 'package:coder_shifu/src/feature/main/view/pages/subject.dart';
@@ -12,8 +14,7 @@ import '../widgets/lesson_uidocumentaation_widget.dart';
 enum ViewType { documentation, code, ui }
 
 class Lesson extends StatefulWidget {
-  const Lesson({super.key});
-
+  const Lesson({super.key,});
   @override
   State<Lesson> createState() => _LessonState();
 }
@@ -22,16 +23,18 @@ class _LessonState extends State<Lesson> {
   SubjectModel newModel = model;
   ViewType currentView = ViewType.documentation;
 
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: CustomTextWidget(
-          newModel.subjectTitle!,
+          "title",
           textColor: context.appTheme.secondary,
           fontWeight: FontWeight.bold,
-          fontSize: 24,
+          fontSize: "title".length > 16 ? 15 : 24,
         ),
         leading: IconButton(
           onPressed: () {
@@ -43,8 +46,8 @@ class _LessonState extends State<Lesson> {
       body: Center(
         child: _buildContent(newModel),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: _buildFAB(),
+
+      floatingActionButton:  _buildFAB(),
     );
   }
 
@@ -91,6 +94,7 @@ class _LessonState extends State<Lesson> {
   Widget _buildFABButton({required String label, required VoidCallback onPressed}) {
     return MaterialButton(
       onPressed: onPressed,
+      color: context.appTheme.primary,
       shape: const StadiumBorder(side: BorderSide(color: Colors.deepPurple)),
       child: CustomTextWidget(
         label,

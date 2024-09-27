@@ -12,6 +12,7 @@ final class AppRouteName {
   static const String searchDetail = "searchDetail";
   static const String lesson = "lesson";
   static const String contents = "contents";
+  static const String contentsDescription = "contents-description";
 
 
   // static const String signIn = "/signIn";
