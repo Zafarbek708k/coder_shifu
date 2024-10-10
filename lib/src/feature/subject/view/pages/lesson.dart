@@ -1,15 +1,13 @@
-import 'dart:developer';
-
 import 'package:coder_shifu/src/core/constants/context_extension.dart';
 import 'package:coder_shifu/src/core/widgets/text_widget.dart';
-import 'package:coder_shifu/src/feature/main/view/pages/subject.dart';
+import 'package:coder_shifu/src/feature/subject/view/pages/subject.dart';
+import 'package:coder_shifu/src/feature/subject/view/widgets/lesson_codeui_widget.dart';
+import 'package:coder_shifu/src/feature/subject/view/widgets/lesson_ui_widget.dart';
+import 'package:coder_shifu/src/feature/subject/view/widgets/lesson_uidocumentaation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../widgets/lesson_codeui_widget.dart';
-import '../widgets/lesson_ui_widget.dart';
-import '../widgets/lesson_uidocumentaation_widget.dart';
 
 enum ViewType { documentation, code, ui }
 

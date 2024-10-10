@@ -1,15 +1,15 @@
 import "package:coder_shifu/src/feature/entry/view/pages/on_boarding_page.dart";
 import "package:coder_shifu/src/feature/entry/view/pages/splash_page.dart";
-import "package:coder_shifu/src/feature/main/view/pages/book.dart";
-import "package:coder_shifu/src/feature/main/view/pages/news.dart";
-import "package:coder_shifu/src/feature/main/view/pages/profile.dart";
-import "package:coder_shifu/src/feature/main/view/sub_pages/content_description.dart";
-import "package:coder_shifu/src/feature/main/view/sub_pages/contents.dart";
-import "package:coder_shifu/src/feature/main/view/sub_pages/lesson.dart";
+import "package:coder_shifu/src/feature/book/view/pages/book.dart";
+import "package:coder_shifu/src/feature/news/view/pages/news.dart";
+import "package:coder_shifu/src/feature/profile/view/pages/profile.dart";
+import "package:coder_shifu/src/feature/subject/view/pages/content.dart";
+import "package:coder_shifu/src/feature/subject/view/pages/lesson.dart";
+import "package:coder_shifu/src/feature/subject/view/pages/module.dart";
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
 import "../../feature/home_navigation.dart";
-import "../../feature/main/view/pages/subject.dart";
+import "../../feature/subject/view/pages/subject.dart";
 import "app_route_name.dart";
 
 final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'shell-key');

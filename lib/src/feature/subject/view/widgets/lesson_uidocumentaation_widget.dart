@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/widgets/text_widget.dart';
-import '../pages/subject.dart';
+import '../../../subject/view/pages/subject.dart';
 
 class UIDocumentation extends StatelessWidget {
   const UIDocumentation({super.key, required this.model});

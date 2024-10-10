@@ -1,11 +1,11 @@
 import "package:coder_shifu/src/core/constants/context_extension.dart";
 import "package:coder_shifu/src/core/routes/app_route_name.dart";
 import "package:coder_shifu/src/core/widgets/text_widget.dart";
+import "package:coder_shifu/src/feature/subject/view/widgets/subject_button_widget.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
-import "../../../../core/widgets/app_material_context.dart";
-import "../widgets/subject_button_widget.dart";
+import "../../../../core/widgets/app_material_context.dart"; 
 
 class Subject extends ConsumerStatefulWidget {
   const Subject({super.key});
