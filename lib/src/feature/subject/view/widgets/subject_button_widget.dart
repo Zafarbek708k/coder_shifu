@@ -61,7 +61,7 @@ class CustomSubjectButton extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   shimmerBaseColor: context.appTheme.secondary,
                 ),
-              const SizedBox(width: 15),
+              const SizedBox(width: 20),
               imageName != null
                   ? Container(
                       height: 45,

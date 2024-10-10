@@ -3,11 +3,12 @@ import "package:coder_shifu/src/feature/entry/view/pages/splash_page.dart";
 import "package:coder_shifu/src/feature/book/view/pages/book.dart";
 import "package:coder_shifu/src/feature/news/view/pages/news.dart";
 import "package:coder_shifu/src/feature/profile/view/pages/profile.dart";
-import "package:coder_shifu/src/feature/subject/view/pages/content.dart";
+import "package:coder_shifu/src/feature/subject/view/pages/modules.dart";
 import "package:coder_shifu/src/feature/subject/view/pages/lesson.dart";
-import "package:coder_shifu/src/feature/subject/view/pages/module.dart";
+import "package:coder_shifu/src/feature/subject/view/pages/module_lessons.dart";
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
+import "../../data/entity/subject.dart";
 import "../../feature/home_navigation.dart";
 import "../../feature/subject/view/pages/subject.dart";
 import "app_route_name.dart";
@@ -20,34 +21,30 @@ final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>(debu
 final class AppRouter {
   const AppRouter._();
 
+  static final GoRoute modules = GoRoute(
+      parentNavigatorKey: appNavigatorKey,
+      path: AppRouteName.module,
+      pageBuilder: (BuildContext context, GoRouterState state) => MaterialPage(
+        child: Modules(argument: state.extra as Fan),
+      ),
+      routes: [moduleLessons]);
+
+  static final GoRoute moduleLessons = GoRoute(
+      parentNavigatorKey: appNavigatorKey,
+      path: AppRouteName.moduleLessons,
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return MaterialPage(child: ModuleLessons(argument: state.extra! as Fan));
+      },
+      routes: [lesson]);
+
   static final GoRoute lesson = GoRoute(
     parentNavigatorKey: appNavigatorKey,
     path: AppRouteName.lesson,
-    pageBuilder: (BuildContext context, GoRouterState state){
-      return  const MaterialPage(child: Lesson());
+    pageBuilder: (BuildContext context, GoRouterState state) {
+      return  MaterialPage(child: Lesson(extra: state.extra as Fan));
     },
   );
 
-  static final GoRoute contentDescription = GoRoute(
-    parentNavigatorKey: appNavigatorKey,
-    path: AppRouteName.contentsDescription,
-    pageBuilder: (BuildContext context, GoRouterState state){
-      return  MaterialPage(child: ContentDescription(argument: state.extra! as Map<String, bool>,));
-    },
-    routes: [
-      lesson
-    ]
-  );
-  static final GoRoute contents = GoRoute(
-      parentNavigatorKey: appNavigatorKey,
-    path: AppRouteName.contents,
-    pageBuilder: (BuildContext context, GoRouterState state) => const MaterialPage(
-      child: Contents(),
-    ),
-    routes: [
-      contentDescription
-    ]
-  );
 
   static final GoRouter router = GoRouter(
     navigatorKey: appNavigatorKey,
@@ -76,7 +73,7 @@ final class AppRouter {
               GoRoute(
                 path: AppRouteName.subject,
                 pageBuilder: (context, state) => const NoTransitionPage(child: Subject()),
-                routes: [contents],
+                routes: [modules],
               ),
             ],
           ),

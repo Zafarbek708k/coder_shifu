@@ -1,4 +1,5 @@
 
+import "package:coder_shifu/src/feature/subject/vm/subject_vm.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:coder_shifu/src/feature/entry/vm/entry_view_model.dart";
 import "package:coder_shifu/src/feature/settings/locale_controller.dart";
@@ -12,4 +13,4 @@ final locale = ChangeNotifierProvider((ref) => LocalController());
 final entryController = ChangeNotifierProvider((ref) => EntryViewModel());
 
 // final homeNavigationController = ChangeNotifierProvider((ref) => HomeViewModel());
-// final homePageController = ChangeNotifierProvider((ref) => HomeViewModel());
+final subjectController = ChangeNotifierProvider((ref) => SubjectVm());

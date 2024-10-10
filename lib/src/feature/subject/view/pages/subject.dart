@@ -1,15 +1,17 @@
+import "dart:developer";
+
+import "package:coder_shifu/riverpod.dart";
 import "package:coder_shifu/src/core/constants/context_extension.dart";
 import "package:coder_shifu/src/core/routes/app_route_name.dart";
 import "package:coder_shifu/src/core/widgets/text_widget.dart";
+import "package:coder_shifu/src/data/entity/subject.dart";
 import "package:coder_shifu/src/feature/subject/view/widgets/subject_button_widget.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
-import "../../../../core/widgets/app_material_context.dart"; 
 
 class Subject extends ConsumerStatefulWidget {
   const Subject({super.key});
-
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _SubjectState();
 }
@@ -17,48 +19,51 @@ class Subject extends ConsumerStatefulWidget {
 class _SubjectState extends ConsumerState<Subject> {
   @override
   Widget build(BuildContext context) {
-    // ref.watch(homePageController);
-    // final controller = ref.read(homePageController);
+    ref.watch(subjectController);
+    final controller = ref.read(subjectController);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: CustomTextWidget("Subjects", textColor: context.appTheme.secondary, fontSize: 24, fontWeight: FontWeight.bold),
+        iconTheme: IconThemeData(
+          color: context.appTheme.secondary
+        ),
       ),
       body: Center(
-        child: Column(
-          children: [
-            CustomSubjectButton(
-              title: "Flutter    ",
-              imageName: "assets/icons/flutter_icon.png",
+        child: ListView.builder(
+          itemCount: controller.subjects.length,
+          itemBuilder: (context, index) {
+            return CustomSubjectButton(
+              title: controller.subjects[index],
+              imageName: controller.subjectsImg[index],
               onPressed: () {
-                context.go("${AppRouteName.subject}/${AppRouteName.contents}");
+                // get subject title from selected item and add extra value for the data transfer to next page
+                // for example String value  = "Flutter';
+                log("subject name $index => ${controller.subjects[index]}");
+                Fan extraFan = Fan(subjectName: controller.subjects[index]);
+                log(extraFan.subjectName ?? "extra null data ");
+
+                if(index == 0){
+                  context.go("${AppRouteName.subject}/${AppRouteName.module}", extra: extraFan);
+                }
               },
-            ),
-            CustomSubjectButton(
-              title: "Java  ",
-              imageName: "assets/icons/java_icon.png",
-              onPressed: () {},
-            ),
-            CustomSubjectButton(
-              title: "C#  ",
-              imageName: "assets/icons/c_sharp_icon.png",
-              onPressed: () {},
-            ),
-            MaterialButton(
-              onPressed: () async {
-                themeController.switchTheme(); // Using the shared instance
-              },
-              shape: const StadiumBorder(
-                side: BorderSide(color: Colors.deepOrange),
-              ),
-              child: const Text("Theme"),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
 
 SubjectModel model = SubjectModel(
   isCompleted: true,
@@ -76,10 +81,10 @@ SubjectModel model = SubjectModel(
     "The Container widget in Flutter is a versatile widget for layout, decoration, and alignment.",
     "It can be used to add padding, margin, borders, background color, and other styles to a widget.",
     "Containers can be nested, making it possible to create complex layouts with ease."
-    "The Container widget in Flutter is a versatile widget for layout, decoration, and alignment.",
+        "The Container widget in Flutter is a versatile widget for layout, decoration, and alignment.",
     "It can be used to add padding, margin, borders, background color, and other styles to a widget.",
     "Containers can be nested, making it possible to create complex layouts with ease."
-    "The Container widget in Flutter is a versatile widget for layout, decoration, and alignment.",
+        "The Container widget in Flutter is a versatile widget for layout, decoration, and alignment.",
     "It can be used to add padding, margin, borders, background color, and other styles to a widget.",
     "Containers can be nested, making it possible to create complex layouts with ease."
   ],

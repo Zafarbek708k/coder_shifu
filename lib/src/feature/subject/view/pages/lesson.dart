@@ -1,30 +1,36 @@
 import 'package:coder_shifu/src/core/constants/context_extension.dart';
 import 'package:coder_shifu/src/core/widgets/text_widget.dart';
+import 'package:coder_shifu/src/data/entity/subject.dart';
 import 'package:coder_shifu/src/feature/subject/view/pages/subject.dart';
 import 'package:coder_shifu/src/feature/subject/view/widgets/lesson_codeui_widget.dart';
 import 'package:coder_shifu/src/feature/subject/view/widgets/lesson_ui_widget.dart';
 import 'package:coder_shifu/src/feature/subject/view/widgets/lesson_uidocumentaation_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../../../riverpod.dart';
 
 
 enum ViewType { documentation, code, ui }
 
-class Lesson extends StatefulWidget {
-  const Lesson({super.key,});
+class Lesson extends ConsumerStatefulWidget {
+  const Lesson({super.key, this.extra});
+  final Fan? extra;
   @override
-  State<Lesson> createState() => _LessonState();
+  LessonState createState() => LessonState();
 }
 
-class _LessonState extends State<Lesson> {
+class LessonState extends ConsumerState<Lesson> {
   SubjectModel newModel = model;
   ViewType currentView = ViewType.documentation;
 
 
   @override
   Widget build(BuildContext context) {
-
+    ref.watch(subjectController);
+    final controller = ref.read(subjectController);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -33,6 +39,9 @@ class _LessonState extends State<Lesson> {
           textColor: context.appTheme.secondary,
           fontWeight: FontWeight.bold,
           fontSize: "title".length > 16 ? 15 : 24,
+        ),
+        iconTheme: IconThemeData(
+            color: context.appTheme.secondary
         ),
         leading: IconButton(
           onPressed: () {
@@ -44,7 +53,6 @@ class _LessonState extends State<Lesson> {
       body: Center(
         child: _buildContent(newModel),
       ),
-
       floatingActionButton:  _buildFAB(),
     );
   }
