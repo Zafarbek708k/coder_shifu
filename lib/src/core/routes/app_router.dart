@@ -1,3 +1,6 @@
+import "package:coder_shifu/src/feature/entry/view/pages/auth_forget_password.dart";
+import "package:coder_shifu/src/feature/entry/view/pages/auth_login.dart";
+import "package:coder_shifu/src/feature/entry/view/pages/auth_register.dart";
 import "package:coder_shifu/src/feature/entry/view/pages/on_boarding_page.dart";
 import "package:coder_shifu/src/feature/entry/view/pages/splash_page.dart";
 import "package:coder_shifu/src/feature/book/view/pages/book.dart";
@@ -59,6 +62,22 @@ final class AppRouter {
         path: AppRouteName.welcomePage,
         builder: (context, state) => const OnBoardingPage(),
       ),
+
+      GoRoute(
+        path: AppRouteName.login,
+        builder: (context, state) => const AuthLogin(),
+        routes: [
+          GoRoute(
+            path: AppRouteName.register,
+            builder: (context, state) =>  const AuthRegister(),
+          ),
+          GoRoute(
+            path: AppRouteName.forgetPassword,
+            builder: (context, state) => const AuthForgetPassword(),
+          ),
+        ]
+      ),
+
 
       /// Patient Shell Route
       StatefulShellRoute.indexedStack(

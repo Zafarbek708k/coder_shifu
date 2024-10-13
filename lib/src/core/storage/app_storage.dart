@@ -7,6 +7,9 @@ enum StorageKey {
   locale,
   theme,
   enter,
+  userName,
+  userEmail,
+  userPassword,
 }
 
 class AppStorage extends FlutterSecureStorage {

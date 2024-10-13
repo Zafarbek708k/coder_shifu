@@ -12,16 +12,17 @@ class HomeNavigation extends StatefulWidget {
   const HomeNavigation({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
+  static GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   State<HomeNavigation> createState() => _HomeNavigationState();
 }
 
 class _HomeNavigationState extends State<HomeNavigation> {
+
+
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return AdvancedDrawer(
       backdrop: Container(
         width: double.infinity,
@@ -46,6 +47,7 @@ class _HomeNavigationState extends State<HomeNavigation> {
       backdropColor: context.appTheme.primary,
       drawer: const CustomMainDrawer(),
       child: Scaffold(
+        key: HomeNavigation.scaffoldKey,
         body: widget.navigationShell,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: Padding(

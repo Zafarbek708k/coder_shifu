@@ -22,18 +22,41 @@ class Modules extends ConsumerStatefulWidget {
 class ModulesState extends ConsumerState<Modules> {
   bool state1 = true;
   String title = "";
-  List<String> list = [];
+  int? subjectId;
+
+  List<String> checkList({required int index}) {
+    switch (index) {
+      case 0:
+        {
+          return ref.read(subjectController).moduleFL;
+        }
+      case 1:
+        {
+          return ref.read(subjectController).moduleJV;
+        }
+      case 2:
+        {
+          return ref.read(subjectController).moduleCSH;
+        }
+      default:
+        {
+          return [];
+        }
+    }
+  }
 
   @override
   void initState() {
     final extra = widget.argument;
-    list = ref.read(subjectController).moduleFL;
     if (extra != null) {
       setState(() {
+        subjectId = extra.subjectId;
         title = extra.subjectName ?? "";
         log(extra.subjectName ?? "subject name null in module page");
+        checkList(index: extra.subjectId ?? 5);
       });
     }
+
     super.initState();
   }
 
@@ -62,16 +85,16 @@ class ModulesState extends ConsumerState<Modules> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
           child: ListView.separated(
-            itemCount: list.length,
+            itemCount: checkList(index: widget.argument?.module ?? 0).length,
             separatorBuilder: (context, index) => const SizedBox(height: 10),
-            itemBuilder: (context, index) {
+            itemBuilder: (context, number) {
               return CustomSubjectButton(
                 size: 15,
-                title: list[index],
+                title: checkList(index: widget.argument?.subjectId ?? 0)[number],
                 onPressed: () {
-                  Fan extraFan = Fan(subjectName: title, module: index + 1);
-                  log(extraFan.module.toString());
-                  log(extraFan.subjectName.toString());
+                  Fan extraFan = Fan(subjectName: title, module: number+1, subjectId: subjectId);
+                  log("module = ${extraFan.module}, subID = ${extraFan.subjectId}, SubName = ${extraFan.subjectName}");
+
                   context.push("${AppRouteName.subject}/${AppRouteName.module}/${AppRouteName.moduleLessons}", extra: extraFan);
                 },
               );
@@ -79,32 +102,6 @@ class ModulesState extends ConsumerState<Modules> {
           ),
         ),
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // floatingActionButton: Row(
-      //   children: [
-      //     FABWidget(
-      //       onPressed: () {
-      //         setState(() {
-      //           state1 = true;
-      //           list = controller.moduleFL;
-      //         });
-      //       },
-      //       title: "Flutter",
-      //       imageName: "assets/icons/flutter_icon.png",
-      //     ),
-      //     const Spacer(),
-      //     FABWidget(
-      //       onPressed: () {
-      //         setState(() {
-      //           state1 = false;
-      //           list = controller.moduleDart;
-      //         });
-      //       },
-      //       title: "Dart",
-      //       imageName: "assets/icons/dart_icon.png",
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

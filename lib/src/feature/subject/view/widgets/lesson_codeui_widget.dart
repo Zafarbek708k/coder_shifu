@@ -2,7 +2,7 @@ import 'package:coder_shifu/src/core/constants/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/widgets/text_widget.dart';
-import '../../../subject/view/pages/subject.dart';
+import '../pages/lesson.dart';
 
 class CodeUi extends StatelessWidget {
   const CodeUi({super.key, required this.model});
@@ -12,17 +12,17 @@ class CodeUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
+      padding:  REdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding:  REdgeInsets.all(8.0),
             child: CustomTextWidget(
               model.lessonTitle ?? "No title",
               fontWeight: FontWeight.bold,
               textColor: context.appTheme.secondary,
-              fontSize: 22,
+              fontSize: 22.h,
             ),
           ),
           Expanded(
@@ -30,12 +30,12 @@ class CodeUi extends StatelessWidget {
               itemCount: model.codeImageUrl?.length ?? 0,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+                  padding:  REdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextWidget(model.codeImageUrl?[index].description ?? "no description"),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Container(
                         decoration:  BoxDecoration(
                           borderRadius: BorderRadius.circular(15),

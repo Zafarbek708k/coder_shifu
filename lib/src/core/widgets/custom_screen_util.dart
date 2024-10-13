@@ -16,7 +16,8 @@ class CustomScreenUtil extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, _) => KeyboardDismisser(
-            gestures: const [GestureType.onTap],
-            child: DevicePreview(enabled: kDebugMode && enabledPreview, builder: (context) => child)),
+          gestures: const [GestureType.onTap, GestureType.onDoubleTap],
+          child: DevicePreview(enabled: kDebugMode && enabledPreview, builder: (context) => child),
+        ),
       );
 }

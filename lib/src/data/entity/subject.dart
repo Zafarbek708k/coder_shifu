@@ -1,7 +1,7 @@
 class Fan{
   String? subjectName, topicName;
-  int? module;
-  Fan({this.subjectName, this.topicName, this.module});
+  int? module, subjectId;
+  Fan({this.subjectName, this.topicName, this.module, this.subjectId});
 }
 
 

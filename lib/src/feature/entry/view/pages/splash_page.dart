@@ -16,12 +16,14 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  String? enterUser;
+  String? enterUser, name, email;
 
   Future<bool?> isEnterUser() async {
     enterUser = await AppStorage.$read(key: StorageKey.enter);
+    name = await AppStorage.$read(key: StorageKey.enter);
+    email = await AppStorage.$read(key: StorageKey.enter);
     log("enterUser ==  ${enterUser!}");
-    if (enterUser != null) {
+    if (enterUser != null || name != null || email != null) {
       return true;
     } else {
       return false;
@@ -43,7 +45,7 @@ class _SplashPageState extends State<SplashPage> {
           if (isEntered == true) {
             context.go(AppRouteName.subject);
           } else {
-            context.go(AppRouteName.welcomePage);
+            context.go(AppRouteName.login);
           }
         }
       },

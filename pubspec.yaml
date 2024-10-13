@@ -95,6 +95,7 @@ flutter:
     - assets/icons/
     - assets/lottie/
     - assets/code_image/
+    - assets/svg/
 # The following section is specific to Flutter packages.
 
   # An image asset can refer to one or more resolution-specific "variants", see
