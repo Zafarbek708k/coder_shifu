@@ -2,7 +2,7 @@ import 'package:coder_shifu/src/core/constants/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/widgets/text_widget.dart';
-import '../pages/lesson.dart';
+import '../../data/subject_model.dart';
 
 class UIDocumentation extends StatelessWidget {
   const UIDocumentation({super.key, required this.model});
@@ -47,7 +47,7 @@ class UIDocumentation extends StatelessWidget {
               },
             ),
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 60),
         ],
       ),
     );

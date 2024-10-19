@@ -39,7 +39,6 @@ class _SubjectState extends ConsumerState<Subject> {
                 // get subject title from selected item and add extra value for the data transfer to next page
                 // for example String value  = "Flutter';
                 Fan extraFan = Fan(subjectName: controller.subjects[index], subjectId: index);
-                log("index = $index  === ${extraFan.subjectId}");
                 context.go("${AppRouteName.subject}/${AppRouteName.module}", extra: extraFan);
                 log("subject name ${extraFan.subjectName} = Subject ID number ${extraFan.subjectId}");
               },

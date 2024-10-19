@@ -7,7 +7,6 @@ import 'package:coder_shifu/src/data/entity/subject.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../widgets/fab_button.dart';
 import '../widgets/subject_button_widget.dart';
 
 class Modules extends ConsumerStatefulWidget {
@@ -85,15 +84,23 @@ class ModulesState extends ConsumerState<Modules> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
           child: ListView.separated(
-            itemCount: checkList(index: widget.argument?.module ?? 0).length,
+            itemCount: checkList(index: widget.argument?.moduleId ?? 0).length,
             separatorBuilder: (context, index) => const SizedBox(height: 10),
             itemBuilder: (context, number) {
               return CustomSubjectButton(
                 size: 15,
                 title: checkList(index: widget.argument?.subjectId ?? 0)[number],
                 onPressed: () {
-                  Fan extraFan = Fan(subjectName: title, module: number+1, subjectId: subjectId);
-                  log("module = ${extraFan.module}, subID = ${extraFan.subjectId}, SubName = ${extraFan.subjectName}");
+                  Fan extraFan = Fan(
+                    subjectName: title,
+                    subjectId: subjectId,
+                    moduleId: number + 1,
+                    moduleName: checkList(index: widget.argument?.subjectId ?? 0)[number],
+                  );
+
+                  log("from Module page to module Lesson Page Data Parsing");
+                  log("Subject Name: ${extraFan.subjectName}|| Subject Id: ${extraFan.subjectId}");
+                  log("Module Name: ${extraFan.moduleName}|| Module Id: ${extraFan.moduleId}");
 
                   context.push("${AppRouteName.subject}/${AppRouteName.module}/${AppRouteName.moduleLessons}", extra: extraFan);
                 },

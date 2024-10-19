@@ -59,20 +59,19 @@ class SubjectLocaleData {
     "Control Flow",
     "Operators, Loops",
     "Collections: List, Set, Map",
-    "Null Safety"
+    "Null Safety",
+    "Classes, Objects, Inheritance"
   ];
   static List<String> flutterModuleTopics2 = [
-    "Classes, Objects, Inheritance",
     "Constructors",
     "Enums, Switch",
-    "Collections and Iterators"
-  ];
-  static List<String> flutterModuleTopics3 = [
-    "Asynchronous Programming",
-    "Futures, async/await",
+    "Collections and Iterators",
     "Mixins",
     "Generics",
-    "Extensions",
+    "Asynchronous Programming"
+  ];
+  static List<String> flutterModuleTopics3 = [
+    "Futures, async/await",
     "Abstraction",
     "Interfaces",
     "Polymorphism",
@@ -84,264 +83,295 @@ class SubjectLocaleData {
     "Git & GitHub",
     "Stateless vs Stateful Widgets",
     "Text, Container, SizedBox",
-    "Image, Asset, Buttons"
+    "Image, Asset, Buttons",
+    "Row, Column, Stack, Positioned"
   ];
   static List<String> flutterModuleTopics5 = [
-    "Row, Column, Stack, Positioned",
     "ListView, GridView",
     "Forms and Input Widgets",
     "Navigation: Routes, Navigator",
-    "Deep Links"
+    "Deep Links",
+    "Inherited Widget",
+    "Theme Modes"
   ];
   static List<String> flutterModuleTopics6 = [
-    "Inherited Widget",
-    "Theme Modes",
     "Color Scheme, Light/Dark Modes",
-    "Localization: JSON/ARB Files"
-  ];
-  static List<String> flutterModuleTopics7 = [
+    "Localization: JSON/ARB Files",
     "Shared Preferences",
     "Hive",
     "Path Provider",
-    "SQFLite",
-    "Flutter Secure Storage"
+    "SQFLite"
   ];
-  static List<String> flutterModuleTopics8 = [
+  static List<String> flutterModuleTopics7 = [
+    "Flutter Secure Storage",
     "HTTP",
     "Dio",
     "Chopper/Retrofit",
     "Handling Network Errors",
     "REST APIs & JSON Parsing"
   ];
-  static List<String> flutterModuleTopics9 = [
+  static List<String> flutterModuleTopics8 = [
     "Firebase Realtime Database",
     "Cloud Firestore",
     "Authentication",
     "Crashlytics",
     "Analytics",
-    "Cloud Functions",
-    "Remote Config"
+    "Cloud Functions"
   ];
-  static List<String> flutterModuleTopics10 = [
+  static List<String> flutterModuleTopics9 = [
+    "Remote Config",
     "Provider",
     "Riverpod",
     "Bloc/Cubit",
     "GetX",
-    "MVVM",
+    "MVVM"
+  ];
+  static List<String> flutterModuleTopics10 = [
     "MVC",
     "Clean Architecture",
-    "Best Practices"
-  ];
-  static List<String> flutterModuleTopics11 = [
+    "Best Practices",
     "Hero Animations",
     "Custom Animations",
-    "Slivers",
+    "Slivers"
+  ];
+  static List<String> flutterModuleTopics11 = [
     "CustomPaint",
     "Complex UI Widgets",
-    "Gesture Detectors"
-  ];
-  static List<String> flutterModuleTopics12 = [
+    "Gesture Detectors",
     "Unit Testing",
     "Widget Testing",
-    "Integration Testing",
-    "Performance Optimization",
-    "Debugging"
+    "Integration Testing"
   ];
-  static List<String> flutterModuleTopics13 = [
+  static List<String> flutterModuleTopics12 = [
+    "Performance Optimization",
+    "Debugging",
     "CI/CD for Flutter",
     "Play Store & App Store Deployment",
     "Version Control",
-    "Best Practices"
+    "App Security"
+  ];
+  static List<String> flutterModuleTopics13 = [
+    "App Size Optimization",
+    "Animations & Advanced UI",
+    "State Management",
+    "Database & Persistent Storage",
+    "Network & API Handling",
+    "Firebase Services"
   ];
 
-  // Java Modules
+
+// Java Modules
   static List<String> javaModuleTopics1 = [
     "History and Features of Java",
     "Setting Up Java Environment (JDK)",
     "Java Syntax and Structure",
     "Writing First Java Program",
-    "Data Types, Variables, Operators"
+    "Data Types, Variables, Operators",
+    "Control Flow Statements (if, else, switch)"
   ];
   static List<String> javaModuleTopics2 = [
-    "Control Flow Statements (if, else, switch)",
     "Loops (for, while, do-while)",
     "Methods and Functions",
     "Arrays and Strings",
-    "Scope and Lifetime of Variables"
+    "Scope and Lifetime of Variables",
+    "Classes and Objects",
+    "Constructors and Initialization"
   ];
   static List<String> javaModuleTopics3 = [
-    "Classes and Objects",
-    "Constructors and Initialization",
     "Inheritance and Polymorphism",
     "Abstraction and Interfaces",
-    "Encapsulation and Access Modifiers"
-  ];
-  static List<String> javaModuleTopics4 = [
+    "Encapsulation and Access Modifiers",
     "Types of Exceptions",
     "Try, Catch, and Finally",
-    "Throw and Throws",
-    "Custom Exceptions",
-    "Exception Propagation"
+    "Throw and Throws"
   ];
-  static List<String> javaModuleTopics5 = [
+  static List<String> javaModuleTopics4 = [
+    "Custom Exceptions",
+    "Exception Propagation",
     "Introduction to Collections",
     "ArrayList, LinkedList, and HashMap",
     "Sets, Queues, and Stacks",
-    "Iterators and Looping through Collections",
-    "Generics in Collections"
+    "Iterators and Looping through Collections"
   ];
-  static List<String> javaModuleTopics6 = [
+  static List<String> javaModuleTopics5 = [
+    "Generics in Collections",
     "File Class and Methods",
     "Reading and Writing Files",
     "Handling I/O Exceptions",
     "BufferedReader and BufferedWriter",
     "Serialization and Deserialization"
   ];
-  static List<String> javaModuleTopics7 = [
+  static List<String> javaModuleTopics6 = [
     "Introduction to Multithreading",
     "Thread Class and Runnable Interface",
     "Thread Lifecycle and Management",
     "Synchronized Methods and Blocks",
-    "Deadlock and Race Conditions"
+    "Deadlock and Race Conditions",
+    "Generics in Java"
   ];
-  static List<String> javaModuleTopics8 = [
-    "Java I/O Classes (InputStream, OutputStream)",
-    "File I/O",
-    "Object Streams",
-    "Serialization in Java",
-    "Byte Streams vs Character Streams"
-  ];
-  static List<String> javaModuleTopics9 = [
-    "Networking Basics",
-    "Sockets and ServerSocket",
-    "TCP vs UDP",
-    "Client-Server Communication",
-    "URL and HttpURLConnection"
-  ];
-  static List<String> javaModuleTopics10 = [
-    "Introduction to JDBC",
-    "Connecting to Databases",
-    "Executing SQL Queries",
-    "Prepared Statements",
-    "Transaction Management"
-  ];
-  static List<String> javaModuleTopics11 = [
-    "Generics in Java",
+  static List<String> javaModuleTopics7 = [
     "Parameterized Types",
     "Bounded Types",
     "Custom Annotations",
-    "Using Built-in Annotations"
+    "Using Built-in Annotations",
+    "Java I/O Classes (InputStream, OutputStream)",
+    "File I/O"
   ];
-  static List<String> javaModuleTopics12 = [
+  static List<String> javaModuleTopics8 = [
+    "Object Streams",
+    "Serialization in Java",
+    "Byte Streams vs Character Streams",
+    "Networking Basics",
+    "Sockets and ServerSocket",
+    "TCP vs UDP"
+  ];
+  static List<String> javaModuleTopics9 = [
+    "Client-Server Communication",
+    "URL and HttpURLConnection",
+    "Introduction to JDBC",
+    "Connecting to Databases",
+    "Executing SQL Queries",
+    "Prepared Statements"
+  ];
+  static List<String> javaModuleTopics10 = [
+    "Transaction Management",
     "Introduction to JavaFX",
     "JavaFX Application Structure",
     "Layout Managers",
     "Event Handling in JavaFX",
     "FXML and Scene Builder"
   ];
-  static List<String> javaModuleTopics13 = [
+  static List<String> javaModuleTopics11 = [
     "Understanding JVM and JIT Compiler",
     "Garbage Collection in Java",
     "Memory Management",
     "Java Security Model",
-    "Reflection and Dynamic Class Loading"
+    "Reflection and Dynamic Class Loading",
+    "Thread Safety"
+  ];
+  static List<String> javaModuleTopics12 = [
+    "Advanced JavaFX",
+    "Java Modules System",
+    "Lambda Expressions",
+    "Stream API",
+    "Optional Class",
+    "Java Best Practices"
+  ];
+  static List<String> javaModuleTopics13 = [
+    "Java Deployment (JARs & WARs)",
+    "Maven and Gradle",
+    "CI/CD in Java Projects",
+    "Unit Testing with JUnit",
+    "Integration Testing",
+    "Performance Optimization in Java"
   ];
 
-  // C# Modules
+
+// C# Modules
   static List<String> csharpModuleTopics1 = [
     "History and Features of C#",
     "Setting Up .NET and Visual Studio",
     "C# Syntax and Structure",
     "Writing First C# Program",
-    "Data Types, Variables, Operators"
+    "Data Types, Variables, Operators",
+    "Control Flow Statements (if, else, switch)"
   ];
   static List<String> csharpModuleTopics2 = [
-    "Control Flow Statements (if, else, switch)",
     "Loops (for, while, do-while)",
     "Methods and Functions",
     "Arrays and Strings",
-    "Scope and Lifetime of Variables"
+    "Scope and Lifetime of Variables",
+    "Classes and Objects",
+    "Constructors and Initialization"
   ];
   static List<String> csharpModuleTopics3 = [
-    "Classes and Objects",
-    "Constructors and Initialization",
     "Inheritance and Polymorphism",
     "Abstraction and Interfaces",
-    "Encapsulation and Access Modifiers"
-  ];
-  static List<String> csharpModuleTopics4 = [
+    "Encapsulation and Access Modifiers",
     "Types of Exceptions",
     "Try, Catch, and Finally",
-    "Throw and Throws",
-    "Custom Exceptions",
-    "Exception Propagation"
+    "Throw and Throws"
   ];
-  static List<String> csharpModuleTopics5 = [
+  static List<String> csharpModuleTopics4 = [
+    "Custom Exceptions",
+    "Exception Propagation",
     "Introduction to Collections",
     "List, Dictionary, and Queue",
     "Sets, Stacks, and HashSet",
-    "LINQ Queries and Operations",
-    "Delegates and Anonymous Functions in LINQ"
+    "LINQ Queries and Operations"
   ];
-  static List<String> csharpModuleTopics6 = [
+  static List<String> csharpModuleTopics5 = [
+    "Delegates and Anonymous Functions in LINQ",
     "File and Directory Classes",
     "Reading and Writing Files",
     "Handling I/O Exceptions",
     "StreamReader and StreamWriter",
     "Serialization and Deserialization"
   ];
-  static List<String> csharpModuleTopics7 = [
+  static List<String> csharpModuleTopics6 = [
     "Introduction to Multithreading",
     "Thread Class and Task Parallel Library",
     "Async and Await in C#",
     "Locking and Synchronization",
-    "Deadlock and Race Conditions"
+    "Deadlock and Race Conditions",
+    "Understanding Delegates"
   ];
-  static List<String> csharpModuleTopics8 = [
-    "Networking Basics in .NET",
-    "Sockets and TCP/UDP",
-    "HTTP Clients and REST APIs",
-    "Client-Server Communication",
-    "SignalR for Real-Time Applications"
-  ];
-  static List<String> csharpModuleTopics9 = [
-    "Introduction to Entity Framework",
-    "Code-First and Database-First Approach",
-    "LINQ to SQL Queries",
-    "CRUD Operations",
-    "Entity Framework Migrations"
-  ];
-  static List<String> csharpModuleTopics10 = [
-    "Introduction to Windows Forms",
-    "Creating Windows Applications",
-    "Introduction to WPF",
-    "XAML for UI Design",
-    "Event Handling in WPF"
-  ];
-  static List<String> csharpModuleTopics11 = [
-    "Understanding Delegates",
+  static List<String> csharpModuleTopics7 = [
     "Event Handling and Custom Events",
     "Lambda Expressions and Anonymous Methods",
     "Func, Action, and Predicate Delegates",
-    "Using LINQ with Delegates"
+    "Using LINQ with Delegates",
+    "Networking Basics in .NET",
+    "Sockets and TCP/UDP"
   ];
-  static List<String> csharpModuleTopics12 = [
+  static List<String> csharpModuleTopics8 = [
+    "HTTP Clients and REST APIs",
+    "Client-Server Communication",
+    "SignalR for Real-Time Applications",
+    "Introduction to Entity Framework",
+    "Code-First and Database-First Approach",
+    "LINQ to SQL Queries"
+  ];
+  static List<String> csharpModuleTopics9 = [
+    "CRUD Operations",
+    "Entity Framework Migrations",
+    "Introduction to Windows Forms",
+    "Creating Windows Applications",
+    "Introduction to WPF",
+    "XAML for UI Design"
+  ];
+  static List<String> csharpModuleTopics10 = [
+    "Event Handling in WPF",
     "Introduction to ASP.NET Core",
     "MVC Architecture",
     "Routing and Middleware",
     "RESTful APIs with ASP.NET Core",
     "Dependency Injection in ASP.NET"
   ];
-  static List<String> csharpModuleTopics13 = [
+  static List<String> csharpModuleTopics11 = [
     "Reflection in C#",
     "Attributes and Annotations",
     "Memory Management and Garbage Collection",
     "Advanced LINQ Queries",
-    "C# Interoperability with C++"
+    "C# Interoperability with C++",
+    "Unit Testing with MSTest"
   ];
-
-
-
+  static List<String> csharpModuleTopics12 = [
+    "Integration Testing in ASP.NET",
+    "CI/CD in .NET Projects",
+    "Performance Optimization in C#",
+    "Understanding Assemblies and DLLs",
+    "Garbage Collection Tuning",
+    "Security in ASP.NET Core"
+  ];
+  static List<String> csharpModuleTopics13 = [
+    "Windows Services in C#",
+    "Microservices with ASP.NET Core",
+    "Containerization with Docker",
+    "Cloud Integration (Azure, AWS)",
+    "SignalR for Real-Time Communication",
+    "Advanced Memory Management"
+  ];
 
 }
 

@@ -1,11 +1,13 @@
 import 'package:coder_shifu/src/core/constants/context_extension.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/widgets/text_widget.dart';
-import '../pages/lesson.dart';
+
+import '../../data/subject_model.dart';
 
 class Ui extends StatelessWidget {
   const Ui({super.key, required this.model});
   final SubjectModel model;
+
 
   @override
   Widget build(BuildContext context) {

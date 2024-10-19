@@ -4,7 +4,9 @@ import 'package:coder_shifu/src/feature/subject/view/widgets/subject_button_widg
 import 'package:coder_shifu/src/feature/subject/vm/subject_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../riverpod.dart';
+import '../../../../core/routes/app_route_name.dart';
 import '../../../../core/widgets/text_widget.dart';
 import '../../../../data/entity/subject.dart';
 
@@ -18,7 +20,6 @@ class ModuleLessons extends ConsumerStatefulWidget {
 }
 
 class ModuleLessonsState extends ConsumerState<ModuleLessons> {
-  Fan? subject;
   String title = "";
   List<String> moduleLessons = [];
   Fan? extra;
@@ -26,8 +27,8 @@ class ModuleLessonsState extends ConsumerState<ModuleLessons> {
   @override
   void initState() {
     extra = widget.argument!;
-    title = "${extra!.subjectName} ${extra!.module} Module";
-    selectSubject(moduleID: extra!.module!, controller: ref.read(subjectController), subjectId: extra!.subjectId!);
+    title = "${extra!.subjectName} ${extra!.moduleName} Module";
+    selectSubject(moduleID: extra!.moduleId!, controller: ref.read(subjectController), subjectId: extra!.subjectId!);
     super.initState();
   }
 
@@ -115,10 +116,13 @@ class ModuleLessonsState extends ConsumerState<ModuleLessons> {
             title: moduleLessons[index],
             onPressed: () {
               extra!.topicName = moduleLessons[index];
-              log(extra!.module.toString());
-              log(extra!.subjectName.toString());
-              log(extra!.topicName.toString());
-              // context.push("${AppRouteName.subject}/${AppRouteName.contents}/${AppRouteName.contentsDescription}", extra: {"Dart $key": value});
+              extra!.topicId = index;
+              log("Module Lessons page");
+              log("Subject name ${extra?.subjectName} || Subject Id: ${extra?.subjectId}");
+              log("Module name ${extra?.subjectName} || Module Id: ${extra?.subjectId}");
+              log("Topic name ${extra?.topicName} || Topic Id: ${extra?.topicId}");
+
+              context.push("${AppRouteName.subject}/${AppRouteName.module}/${AppRouteName.moduleLessons}/${AppRouteName.lesson}", extra: extra);
             },
           );
         },
